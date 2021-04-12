@@ -4,7 +4,6 @@
        truthDeck: [],
        dareDeck: [],
        drawnCards: [],
-       // cards: ["Truth","Dare"],
        dareVals: [
          "drink a tbsp on hotsauce!",
          "do 20 jumping-jacks",
@@ -19,7 +18,7 @@
        ],
 
        startGame() {
-         const { dareVals, truthVals, dareDeck, truthDeck, drawnCards } = this;
+           const { dareVals, truthVals, dareDeck, truthDeck,drawnCards } = this;
          for (let dare of dareVals) {
            for (let truth of truthVals) {
              if (truth) {
@@ -39,18 +38,38 @@
        },
        drawTruth() {
          const tCard = this.truthDeck.pop();
-         // const usedTruth=this.tCard.push(drawnCards);
-         console.log("truthcard", tCard);
-         // console.log("pushedTruth",usedTruth)
+           console.log("truthcard", tCard);
+         const usedTruth=this.drawnCards.push(tCard)
+           console.log("usedTruth", usedTruth)
+           return tCard
        },
 
-       drawDare() {},
+       drawDare() {
+         const dCard = this.dareDeck.pop();
+         console.log("darecard", dCard);
+        const usedDare=this.drawnCards.push(dCard);
+           console.log("usedDare", usedDare);
+           return dCard
+         },
+         drawRandom(tcards) {
+             const randomCards = [];
+             for (let i = 0; i < tcards; i++) {
+              
+                 randomCards.push(this.drawTruth())
+             }
+              console.log("random",randomCards);
+             return randomCards
+              
+         }
+         
      };
    };
 
    const myDeck = makeGame();
    myDeck.startGame();
-   myDeck.drawTruth();
+    myDeck.drawTruth();
+myDeck.drawDare();
+myDeck.drawRandom();
 
 // let doubles = document.createElement("truthCard")
 // let multiples = document.getElementById("dareCard");
