@@ -1,78 +1,70 @@
 
+   const makeGame = () => {
+     return {
+       truthDeck: [],
+       dareDeck: [],
+       drawnCards: [],
+       // cards: ["Truth","Dare"],
+       dareVals: [
+         "drink a tbsp on hotsauce!",
+         "do 20 jumping-jacks",
+         "show us your favorite dancemove!",
+         "runaround the room 5 times!",
+       ],
+       truthVals: [
+         ,
+         "who was your first kiss?",
+         "who was your favorite childhood friend?",
+         "what was your worst childhood prank?",
+       ],
 
-let dareBtn = document.querySelector("#dare");
-let truthBtn = document.querySelector("#truth");
+       startGame() {
+         const { dareVals, truthVals, dareDeck, truthDeck, drawnCards } = this;
+         for (let dare of dareVals) {
+           for (let truth of truthVals) {
+             if (truth) {
+               truthDeck.push({
+                 truth,
+               });
+             }
+             if (dare) {
+               dareDeck.push({
+                 dare,
+               });
+             }
+             console.log("Truthdeck", truthDeck);
+             console.log("dareDeck", dareDeck);
+           }
+         }
+       },
+       drawTruth() {
+         const tCard = this.truthDeck.pop();
+         // const usedTruth=this.tCard.push(drawnCards);
+         console.log("truthcard", tCard);
+         // console.log("pushedTruth",usedTruth)
+       },
 
+       drawDare() {},
+     };
+   };
 
+   const myDeck = makeGame();
+   myDeck.startGame();
+   myDeck.drawTruth();
 
+// let doubles = document.createElement("truthCard")
+// let multiples = document.getElementById("dareCard");
 
-function makePickDare() {
-//   let truths = [
-//     "who was your first kiss?",
-//     "who was your favorite childhood friend?",
-//     "what was your worst childhood prank?",
-//   ];
+// let double = document.querySelector("#dare").addEventListener("click", clickDouble);
 
-  let dares = [
-    "drink a tbsp on hotsauce!",
-    "do 20 jumping-jacks",
-    "show us your favorite dancemove!",
-  ];
-
-  const deckDare = [];
-  const valuesDare = "1,2,3,4,5,6,7,8,9,10";
-    for (let value of valuesDare.split(",")) {
-        for (let dare of dares)  {
-      
-            deckDare.push({
-                value,
-                dare,
-                
-            });
-        
-    }
-  }
-  return deckDare;
-}
-
-function makePickTruth() {
-  let truths = [
-    "who was your first kiss?",
-    "who was your favorite childhood friend?",
-    "what was your worst childhood prank?",
-  ];
-
-   const deckTruth = [];
-   const valuesTruth = "1,2,3,4,5,6,7,8,9,10";
-  for (let value of valuesTruth.split(",")) {
-   
-      for (let truth of truths) {
-        deckTruth.push({
-          value,
-          dare,
-          truth,
-        });
-      }
-    }
+// function clickDouble(e) {
+//     e.preventDefault()
   
-  return deckTruth;
-}
-
-
-
-
-
-
-function drawDare(deckDare) {
-return deckDare.pop()
-}
-const myPickDare = makePickDare();
-const cardDare = drawDare(myPickDare);
-
-function drawTruth(deckTruth) {
-    return deckTruth.pop()
-}
-const myPickTruth = makePickTruth();
-const cardTruth = drawTruth(myPickTruth);
-
-
+//     console.log("click.click")
+//     myDeck.drawMultiple(2);
+//     console.log("doubles", doub[0],doub[1])
+// doubles.textContent = doub;
+//    document.body.append(doubles)
+  
+  
+// }
